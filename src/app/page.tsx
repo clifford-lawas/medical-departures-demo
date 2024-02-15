@@ -1,27 +1,15 @@
-
-"use client";
-
-import { useState, useEffect } from "react";
-
-export default function Home({ }) {
-
-  const [post, setPost] = useState(null) as any;
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      const res = await fetch('https://stagl-api.medicaldepartures.com/keendex/v1/search?page=1&size=8&query=&sort=recommended&device=desktop', {
-        headers: {
-          'X-Site-Id': '1',
-          'X-Locale': 'en-US',
-        }
-      });
-      const post = await res.json();
-      setPost(post);
-    };
-
-    fetchPost();
-  }, []);
-
+const fetchPost = async () => {
+  const res = await fetch('https://stagl-api.medicaldepartures.com/keendex/v1/search?page=1&size=8&query=&sort=recommended&device=desktop', {
+    headers: {
+      'X-Site-Id': '1',
+      'X-Locale': 'en-US',
+    },
+    cache: 'no-store'
+  });
+  return res.json();
+};
+export default async function Home() {
+   const post : any = await fetchPost();
   if (!post) {
     return (<div className="container mx-auto">
       <div className="flex flex-wrap items-center place-items-center"> <div className="flex flex-wrap items-center place-items-center">
