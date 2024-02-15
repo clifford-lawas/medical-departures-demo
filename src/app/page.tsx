@@ -42,13 +42,13 @@ export default function Home({ }) {
   return (
     <>
       <div className="container mx-auto">
-        <div className="flex flex-wrap items-center place-items-center">{
+        <div className="grid grid-flow-row-dense grid-cols-4 grid-rows-4">{
           post && post.res && post.res.search_result.map((data: any) => {
             return (
               <>
-                <div key={data.id}>
+                <div key={data.id} className='flex-1'>
                   <div className="max-w-sm p-4 rounded-lg " >
-                    <div className="h-[302px]">
+                    <div className="h-[302px] ">
                       <img className="rounded-lg object-cover h-full w-full" src={'https://static.dentaldepartures.com/' + data.photos[0]} alt="" />
                     </div>
                     <div className="p-5">
