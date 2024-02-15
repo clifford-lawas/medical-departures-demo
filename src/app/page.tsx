@@ -16,12 +16,11 @@ export default function Home({ }) {
         }
       });
       const post = await res.json();
-      console.log(post);
       setPost(post);
     };
 
     fetchPost();
-  }, [post]);
+  }, []);
 
   if (!post) {
     return (<div className="container mx-auto">
